@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Presenza come Super-Connettore</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&amp;family=Playfair+Display:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root { --blue:#1A3A5C; --blue2:#2B7BB9; --light:#F8FAFB; --text:#1A2B3C; --muted:#667085; --border:#D6EAF8; --warn:#F0A500; --bad:#E74C3C; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--light); color:var(--text); font-family:'Segoe UI',Arial,sans-serif; line-height:1.65; }
+#sfida-nav { position:sticky; top:0; z-index:10; background:rgba(248,250,251,.98); border-bottom:1px solid rgba(26,58,92,.10); padding:0 24px; height:58px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; }
+.nav-logo { justify-self:center; font-weight:800; color:var(--blue); white-space:nowrap; }
+.nav-tag { justify-self:end; font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.back-link { justify-self:start; display:inline-flex; align-items:center; gap:8px; min-height:36px; padding:8px 16px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--muted); font-size:14px; font-weight:800; text-decoration:none; transition:.2s; }
+.back-link:hover { background:#EBF5FB; color:var(--blue); }
+main { max-width:900px; margin:0 auto; padding:40px 22px 64px; }
+.passage { display:none; background:#fff; border:1px solid rgba(26,58,92,.10); border-radius:22px; padding:26px; margin:24px 0; box-shadow:0 14px 34px rgba(26,58,92,.06); scroll-margin-top:80px; }
+#Start { display:block; }
+main:has(.passage:target) .passage { display:none; }
+main:has(.passage:target) .passage:target { display:block; }
+h1,h2 { color:var(--blue); line-height:1.2; }
+.intro-box { background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; border-radius:24px; padding:30px 28px; text-align:center; box-shadow:0 16px 36px rgba(26,58,92,.15); }
+.intro-box h1 { margin:12px 0 10px; color:#fff; font-size:2rem; }
+.intro-box p { color:rgba(255,255,255,.88); margin:0; }
+.intro-badge { display:inline-block; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:5px 14px; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; font-weight:800; }
+.scenario-box { background:#EBF5FB; border-left:5px solid var(--blue2); border-radius:0 16px 16px 0; padding:18px 22px; margin:18px 0; }
+.context-label { display:block; color:var(--blue2); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; font-weight:800; margin-bottom:6px; }
+.challenge-box,.reflection { background:#F8FAFB; border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin:18px 0; }
+.choice-header { font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:800; margin:28px 0 10px; }
+a.choice { display:block; background:#fff; border:2px solid var(--border); border-radius:14px; padding:14px 18px; margin:10px 0; text-decoration:none; color:var(--blue2); font-weight:750; }
+a.choice:hover { background:#EBF5FB; border-color:var(--blue2); color:var(--blue); }
+a.choice::before { content:'→ '; color:#5BA8D4; }
+.finale-box { border-radius:20px; padding:24px; margin:18px 0; }
+.finale-box.good { background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; }
+.finale-box.good h2 { color:#fff; }
+.finale-box.medium { background:#FEF5E7; border:2px solid var(--warn); }
+.finale-box.bad { background:#FEF0F0; border:2px solid var(--bad); }
+.result-label { display:block; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; font-weight:900; opacity:.85; }
+.tip-box { background:rgba(255,255,255,.18); border-radius:14px; padding:14px 16px; margin-top:14px; }
+.finale-box.medium .tip-box,.finale-box.bad .tip-box { background:rgba(0,0,0,.05); }
+.fallback-note { display:none; background:#fff3cd; border:1px solid #ffe08a; border-radius:12px; padding:12px; margin:16px 0; }
+.finale-summary { background:#fff; border:1px solid var(--border); border-radius:16px; padding:18px 20px; margin:18px 0; }
+.finale-summary h3 { margin-top:0; color:var(--blue); }
+.finale-summary ul { margin:10px 0 0 1.2em; padding:0; }
+.finale-summary li { margin:6px 0; }
+.finale-reflection { background:#F8FAFB; border-left:5px solid var(--blue2); border-radius:0 14px 14px 0; padding:15px 18px; margin-top:16px; }
+
+@supports not selector(main:has(.passage:target)) {
+  .passage { display:block; }
+  .fallback-note { display:block; }
+}
+@media (max-width:750px) { #sfida-nav { grid-template-columns:1fr; height:auto; padding:12px 20px; gap:6px; } .back-link,.nav-logo,.nav-tag { justify-self:start; } main { padding:24px 14px 44px; } .passage { padding:20px; } }
+.finale-box.good h2, .finale-box.good .result-title { color:#fff !important; }
+</style>
+<style id="fix-passaggi-visibili">
+.story-shell .passage{display:none!important;}
+.story-shell .passage.is-active{display:block!important;}
+.story-shell .fallback-note{display:none!important;}
+</style>
+<style id="standalone-story-only">
+body { min-height:100vh; }
+.story-shell { display:block; }
+#sfida-nav { position:sticky; top:0; }
+.story-shell .passage { display:none !important; }
+.story-shell .passage.is-active { display:block !important; }
+</style>
+</head>
+<body>
+<div class="story-shell" id="story-shell">
+<nav id="sfida-nav"><a class="back-link" href="index.html" aria-label="Torna a tutte le sfide"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Tutte le sfide</a><div class="nav-logo">Pillole di Talent</div><div class="nav-tag">Sfida #01</div></nav>
+<main>
+<section class="passage" id="Start">
+<div class="intro-box">
+<span class="intro-badge">SFIDA #1 - ONBOARDING</span>
+<h1>Presenza come Super-Connettore</h1>
+<p>In questa storia sei un neoassunto in azienda. Vivi una giornata di lavoro tra presenza in sede, scambi informali e riunioni ibride, cercando di capire come inserirti, fare domande utili e costruire le prime connessioni professionali.</p>
+</div>
+<p>La sfida è pensata dal tuo punto di vista: sei appena arrivato, conosci ancora poco il gruppo e devi scegliere come muoverti in situazioni realistiche che possono capitare durante l’onboarding.</p>
+<div class="challenge-box"><strong>La sfida:</strong> usare la presenza non come semplice presenza fisica, ma come occasione per conoscere le persone, raccogliere informazioni chiare, osservare le dinamiche reali e costruire collegamenti utili senza forzare il contesto.</div>
+<p class="choice-header">Avvia la simulazione</p>
+<a class="choice" href="#Ingresso">Inizia la tua sfida</a>
+</section>
+<section class="passage" id="Ingresso">
+<div class="scenario-box"><span class="context-label">Scenario 1 · Primo giorno in sede</span><p>Sei un neoassunto in azienda e arrivi in ufficio prima della riunione del mattino. Nella zona caffè, due colleghi più esperti discutono di un’attività che conosci solo in parte. Capisci che il tema sarà importante, ma non hai ancora tutti gli elementi per orientarti con sicurezza.</p></div>
+<p>Hai pochi minuti prima dell’inizio della riunione. La situazione può diventare un’occasione per iniziare a comprendere il contesto, osservare come si muove il gruppo e trovare il modo giusto per inserirti senza forzare la conversazione.</p>
+<p class="choice-header">Come ti comporti?</p>
+<a class="choice" data-score="-1" href="#Ingresso_Passivo">Saluti, ascolti alcuni passaggi e scegli di prepararti alla riunione con le informazioni che hai già raccolto.</a>
+<a class="choice" data-score="2" href="#Ingresso_Curioso">Ti avvicini con discrezione e provi a capire quale aspetto della conversazione potrebbe esserti utile per orientarti meglio nella riunione.</a>
+<a class="choice" data-score="0" href="#Ingresso_Diretto">Intervieni proponendo la tua disponibilità, anche se alcuni elementi del contesto non sono ancora del tutto chiari.</a>
+</section>
+<section class="passage" id="Ingresso_Passivo">
+<p>Saluti cordialmente e ti concentri sulla preparazione individuale. La scelta ti sembra prudente, ma non ti aiuta a raccogliere informazioni utili prima della riunione.</p>
+<p>Poco dopo, in riunione, il tema riemerge e ti accorgi che quella breve conversazione iniziale avrebbe potuto aiutarti a capire meglio priorità, parole chiave e punti di attenzione.</p>
+<p class="choice-header">Durante la riunione, puoi ancora intervenire.</p>
+<a class="choice" data-score="0" href="#Riunione_Osservi">Ascolti e prendi nota senza esporre domande</a>
+<a class="choice" data-score="2" href="#Riunione_Domanda">Fai una domanda di chiarimento utile anche per il gruppo</a>
+</section>
+<section class="passage" id="Ingresso_Curioso">
+<p>Ti avvicini con un tono professionale e non invasivo: “Ho colto che state ragionando su un punto operativo rilevante. Posso chiedere qual è il tema principale, così arrivo più allineato alla riunione?”</p>
+<p>La conversazione resta breve, ma ti permette di collegare informazioni che non erano ancora state esplicitate formalmente. Un collega aggiunge un dettaglio utile e tu inizi a orientarti meglio.</p>
+<p class="choice-header">Come valorizzi ciò che hai appena capito?</p>
+<a class="choice" data-score="0" href="#Riunione_Osservi">Lo tieni a mente e lo userai se necessario</a>
+<a class="choice" data-score="2" href="#Riunione_Domanda">Lo trasformi in una domanda aperta in riunione</a>
+<a class="choice" data-score="2" href="#Micro_Ponte">Proponi un breve confronto per chiarire il tema prima di procedere</a>
+</section>
+<section class="passage" id="Ingresso_Diretto">
+<p>Intervieni subito chiedendo come potresti contribuire. L’intenzione è positiva, ma il momento è delicato: non conosci ancora bene il contesto e rischi di apparire troppo rapido nel proporti.</p>
+<p>La risposta dei colleghi è cortese ma breve. Capisci che, da neoassunto, può essere più efficace creare prima un contesto di ascolto e comprensione.</p>
+<p class="choice-header">Come correggi il tiro?</p>
+<a class="choice" data-score="0" href="#Riunione_Osservi">Fai un passo indietro e osservi meglio</a>
+<a class="choice" data-score="2" href="#Micro_Ponte">Riformuli chiedendo quali elementi ti sarebbe utile capire prima della riunione</a>
+</section>
+<section class="passage" id="Riunione_Osservi">
+<div class="scenario-box"><span class="context-label">Scenario 2 · Riunione ibrida</span><p>La riunione inizia. Alcune persone sono in sala, altre collegate da remoto. Tu sei appena entrato nel team: in presenza riesci a cogliere sguardi, esitazioni e piccoli segnali, ma non sai ancora come interpretarli.</p></div>
+<p>Durante l’aggiornamento, una collega più esperta accenna a un possibile vincolo e passa rapidamente al punto successivo. Prendi molti appunti, ma ti rendi conto che un passaggio importante ti è rimasto poco chiaro.</p>
+<p class="choice-header">Quale scelta fai?</p>
+<a class="choice" data-score="-1" href="#Riunione_Passiva">Prendi nota del dubbio e lasci proseguire la riunione, pensando di recuperare il chiarimento in un secondo momento</a>
+<a class="choice" data-score="2" href="#Riunione_Domanda">Chiedi di chiarire il vincolo, collegandolo al passaggio operativo che il gruppo sta discutendo</a>
+<a class="choice" data-score="1" href="#Riunione_Sintesi">Proponi una breve sintesi per verificare se i passaggi principali sono stati interpretati allo stesso modo</a>
+</section>
+<section class="passage" id="Riunione_Domanda">
+<p>Formuli una domanda neutra: “Per essere sicuro di seguire correttamente, possiamo esplicitare il vincolo e il suo impatto sulle prossime attività?”</p>
+<p>Il chiarimento fa emergere un elemento che non era stato esplicitato. Il gruppo riprende il punto con maggiore precisione e tu riesci a collegare meglio le informazioni.</p>
+<p class="choice-header">Una collega più esperta ti invita a chiudere il tema in modo semplice e chiaro.</p>
+<a class="choice" data-score="2" href="#Followup_Strutturato">Raccogli i punti emersi e proponi un aggiornamento mirato solo sugli aspetti rimasti aperti</a>
+<a class="choice" data-score="1" href="#Riunione_Sintesi">Chiedi a un collega più esperto di riepilogare insieme a te per il gruppo</a>
+<a class="choice" data-score="-1" href="#Visibilita_Eccessiva">Aggiungi un commento personale molto dettagliato per dimostrare di aver capito</a>
+</section>
+<section class="passage" id="Micro_Ponte">
+<p>Proponi un collegamento leggero: “Per me sarebbe utile un confronto di dieci minuti con chi conosce già questo flusso, così posso capire meglio i passaggi critici prima di lavorarci.”</p>
+<p>La proposta apre uno spazio breve in cui alcuni passaggi impliciti possono diventare più leggibili senza appesantire il lavoro del gruppo.</p>
+<p class="choice-header">Come organizzi questo breve confronto?</p>
+<a class="choice" data-score="0" href="#Ponte_Selettivo">Inviti solo le persone più esperte</a>
+<a class="choice" data-score="2" href="#Ponte_Bilanciato">Coinvolgi una persona esperta e definisci un perimetro essenziale del confronto</a>
+<a class="choice" data-score="0" href="#Ponte_Aperto">Coinvolgi più persone per raccogliere prospettive diverse, lasciando il confronto abbastanza aperto</a>
+</section>
+<section class="passage" id="Riunione_Passiva">
+<p>Scegli di non interrompere. La riunione resta nei tempi previsti, ma alcune informazioni rimangono implicite. Nel pomeriggio ti ritrovi con dubbi che avresti potuto chiarire prima.</p>
+<p>La tua presenza in sede non genera un danno, ma non attiva ancora il potenziale di connessione tra persone, domande e conoscenze.</p>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Prova a recuperare l’occasione con un passo più intenzionale</a>
+<a class="choice" data-score="0" href="#Supporto_Minimo">Chiedi un chiarimento rapido alla fine della riunione, senza riaprire tutto il tema</a><a class="choice" data-score="1" href="#Riunione_Sintesi">Provi a recuperare il punto con una sintesi breve nel momento successivo</a></section>
+<section class="passage" id="Riunione_Sintesi">
+<p>Proponi una breve sintesi: “Prima di procedere, posso verificare se ho capito bene i due punti principali e cosa resta da approfondire?”</p>
+<p>La sintesi aiuta a rendere più leggibili alcuni passaggi della riunione. Il confronto resta però ancora concentrato sul chiarimento del punto specifico.</p>
+<p class="choice-header">Dopo la riunione, hai ancora un dubbio pratico.</p>
+<a class="choice" data-score="0" href="#Supporto_Minimo">Chiedi una risposta rapida e torni alle tue attività</a>
+<a class="choice" data-score="2" href="#Osservazione_Diretta">Chiedi di osservare una breve attività operativa con un collega più esperto</a>
+</section>
+<section class="passage" id="Followup_Strutturato">
+<p>Riepiloghi in modo sintetico: decisione presa, rischio aperto, persona da coinvolgere e prossimo passaggio da verificare. Il gruppo apprezza la chiarezza perché riduce ambiguità e sovrapposizioni.</p>
+<p>Il tuo intervento resta misurato e aiuta il gruppo a rendere più chiaro un passaggio che poteva restare implicito.</p>
+<p class="choice-header">Nel pomeriggio si apre un’opportunità di collaborazione spontanea.</p>
+<a class="choice" data-score="2" href="#Osservazione_Diretta">La trasformi in un breve momento di apprendimento condiviso</a>
+<a class="choice" data-score="-1" href="#Autonomia_Silenziosa">La gestisci da solo per essere più veloce</a>
+</section>
+<section class="passage" id="Visibilita_Eccessiva">
+<p>Aggiungi un commento personale molto dettagliato. Alcuni elementi sono utili, ma l’attenzione si sposta dalla chiarezza del gruppo al bisogno di dimostrare che hai capito.</p>
+<p>La visibilità aumenta, ma non necessariamente come reputazione collaborativa.</p>
+<p class="choice-header">Come recuperi equilibrio?</p>
+<a class="choice" data-score="1" href="#Riequilibrio">Riconduci il discorso al bisogno del gruppo e chiedi conferma agli altri</a>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Ti accorgi che serve rimettere al centro il gruppo e riparti da un confronto guidato</a>
+</section>
+<section class="passage" id="Ponte_Selettivo">
+<p>Coinvolgi solo le persone più esperte. Il confronto è tecnicamente solido, ma rischi di restare spettatore: gli altri parlano tra loro e tu fai fatica a trasformare il confronto in apprendimento concreto.</p>
+<p class="choice-header">Puoi ancora ampliare il valore dell’incontro.</p>
+<a class="choice" data-score="0" href="#Supporto_Minimo">Prepari una sintesi da rileggere in autonomia</a>
+<a class="choice" data-score="2" href="#Ponte_Bilanciato">Riapri il confronto chiedendo spiegazioni operative e passaggi osservabili</a>
+</section>
+<section class="passage" id="Ponte_Bilanciato">
+<p>Definisci un confronto breve con obiettivo chiaro: rendere visibili i passaggi critici e permetterti di osservare il ragionamento di chi ha più esperienza.</p>
+<p>Il risultato è concreto: emergono criteri decisionali, scorciatoie rischiose da evitare e una lista di domande da portare al prossimo punto di verifica.</p>
+<a class="choice" href="#Scenario_Corridoio">Prosegui con lo scenario successivo</a>
+<a class="choice" data-score="0" href="#Supporto_Minimo">Ti limiti a un riepilogo essenziale e prosegui con il lavoro individuale</a><a class="choice" data-score="2" href="#Osservazione_Diretta">Chiedi di vedere un esempio concreto prima di applicare il flusso in autonomia</a></section>
+<section class="passage" id="Ponte_Aperto">
+<p>Apri l’invito a tutto il gruppo. La partecipazione è ampia, ma l’assenza di un ordine del giorno rende il confronto dispersivo. Alcune persone dominano la conversazione e tu fatichi a capire quali informazioni siano davvero prioritarie.</p>
+<p class="choice-header">Come rendi l’incontro più utile?</p>
+<a class="choice" data-score="1" href="#Scenario_Corridoio">Introduci un obiettivo e una sequenza di interventi</a>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Riconosci che serve più struttura e rilanci con un confronto guidato</a>
+</section>
+<section class="passage" id="Supporto_Minimo">
+<p>Ottieni una risposta corretta e sintetica. L’informazione ti aiuta, ma l’occasione di apprendimento più profonda resta limitata.</p>
+<p>La connessione è presente, ma rimane puntuale e poco trasformativa.</p>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Continua il percorso e prova a trasformare l’occasione in apprendimento</a>
+</section>
+<section class="passage" id="Osservazione_Diretta">
+<div class="scenario-box"><span class="context-label">Scenario 3 · Apprendimento per osservazione</span><p>Chiedi a un collega più esperto di osservare una breve attività operativa. Chiarisci che l’obiettivo non è essere valutato, ma capire criteri, priorità e segnali che normalmente restano impliciti.</p></div>
+<p>Durante l’attività, emergono dettagli pratici: come vengono interpretate richieste incomplete, quali segnali indicano una criticità e quando è opportuno coinvolgere altre competenze.</p>
+<p class="choice-header">Come chiudi il momento di osservazione?</p>
+<a class="choice" data-score="2" href="#Debrief_Aperto">Chiedi un confronto su cosa hai notato e cosa ti resta poco chiaro</a>
+<a class="choice" data-score="0" href="#Debrief_Scritto">Ti fai inviare solo un riepilogo scritto</a>
+<a class="choice" data-score="-1" href="#Autonomia_Silenziosa">Concludi rapidamente perché hai altre priorità</a>
+</section>
+<section class="passage" id="Autonomia_Silenziosa">
+<p>Gestisci l’attività da solo. Il risultato operativo è raggiunto, ma il processo decisionale resta poco chiaro e non sfrutti l’occasione per imparare dai colleghi.</p>
+<p>La presenza in sede si traduce in efficienza individuale, non ancora in apprendimento e connessione.</p>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Prova a recuperare l’occasione con un passo più intenzionale</a>
+<a class="choice" data-score="0" href="#Supporto_Minimo">Confronti il risultato con un collega solo sui passaggi che ti sembrano meno solidi</a><a class="choice" data-score="1" href="#Debrief_Aperto">Riprendi l’attività con una domanda mirata su cosa avresti potuto osservare meglio</a></section>
+<section class="passage" id="Debrief_Aperto">
+<p>Apri un confronto finale con domande mirate: “Quali passaggi erano decisivi? Dove c’era un rischio? Quale informazione avrei dovuto cercare prima?”</p>
+<p>La conversazione ti consente di esplicitare ciò che hai osservato e di correggere eventuali interpretazioni incomplete. Il valore dell’esperienza aumenta.</p>
+<p class="choice-header">Più tardi, incontri una responsabile di un altro gruppo che sta cercando competenze simili a quelle emerse nella tua riunione.</p>
+<a class="choice" data-score="2" href="#Connessione_Qualificata">Metti in contatto le persone indicando contesto, possibile punto di contatto e prossimo passo</a>
+<a class="choice" data-score="0" href="#Connessione_Generica">Indichi genericamente che il tuo gruppo potrebbe aiutare</a>
+</section>
+<section class="passage" id="Debrief_Scritto">
+<p>Ricevi un riepilogo accurato. È utile per consolidare l’informazione, ma non ti permette di verificare pienamente cosa hai compreso durante l’osservazione.</p>
+<p>Il supporto è professionale, ma la dimensione relazionale della presenza resta parzialmente utilizzata.</p>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Continua il percorso e prova a trasformare l’occasione in apprendimento</a>
+</section>
+<section class="passage" id="Scenario_Corridoio">
+<div class="scenario-box"><span class="context-label">Scenario 4 · Collaborazione spontanea</span><p>Nel corridoio, una persona di un altro gruppo menziona un problema simile a quello discusso nella tua riunione. Non è una richiesta formale, ma riconosci una possibile sinergia e ti chiedi se puoi facilitare un collegamento utile.</p></div>
+<p class="choice-header">Come agisci?</p>
+<a class="choice" data-score="1" href="#Connessione_Analisi">Fai alcune domande per capire se il collegamento è utile o se rischia di essere prematuro</a>
+<a class="choice" href="#Connessione_Ampia">Proponi immediatamente una riunione ampia tra i due gruppi</a>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Non intervieni subito, ma più tardi provi a recuperare con una domanda mirata</a>
+</section>
+<section class="passage" id="Connessione_Analisi">
+<p>Fai domande essenziali: obiettivo, vincolo principale, competenze necessarie, urgenza. Verifichi che il collegamento sia utile prima di attivare altre persone.</p>
+<p>Le domande ti aiutano a capire se il collegamento può essere utile o se rischia di aprire un confronto troppo ampio rispetto al bisogno reale.</p>
+<a class="choice" data-score="2" href="#Connessione_Qualificata">Metti in contatto le persone indicando contesto, possibile punto di contatto e prossimo passo</a>
+</section>
+<section class="passage" id="Connessione_Ampia">
+<p>Proponi subito una riunione ampia. L’iniziativa dimostra proattività, ma il gruppo percepisce il rischio di un incontro poco focalizzato.</p>
+<p class="choice-header">Come puoi rendere la proposta più efficace?</p>
+<a class="choice" data-score="2" href="#Connessione_Qualificata">Riduci il perimetro e definisci un obiettivo specifico</a>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Rivedi il perimetro e provi a costruire un passaggio più utile</a>
+</section>
+<section class="passage" id="Connessione_Generica">
+<p>Fornisci un’indicazione generale. L’intenzione è collaborativa, ma manca una cornice chiara: chi deve parlare con chi, su quale tema e con quale obiettivo.</p>
+<p>La possibilità di collaborazione rimane aperta, ma non si trasforma ancora in valore concreto.</p>
+<a class="choice" data-score="0" href="#Rilancio_Neoassunto">Continua il percorso e prova a trasformare l’occasione in apprendimento</a>
+</section>
+<section class="passage" id="Connessione_Qualificata">
+<p>Metti in contatto due persone con una cornice sintetica: contesto, motivo del collegamento, valore atteso e prossimo passo. Non ti sostituisci agli altri, ma faciliti il primo scambio.</p>
+<p>Il collegamento risulta utile perché non forza la collaborazione: offre un contesto, chiarisce il motivo dello scambio e lascia spazio alle persone coinvolte.</p>
+<p class="choice-header">Nuova svolta: ti chiedi come usare al meglio il lavoro ibrido durante il tuo onboarding.</p>
+<a class="choice" data-score="1" href="#Onboarding_Presenza">Decidi di valorizzare alcuni momenti in presenza nel primo periodo</a>
+<a class="choice" data-score="-1" href="#Onboarding_Remoto">Pensi di poter gestire quasi tutto da remoto se sei ben organizzato</a>
+<a class="choice" data-score="2" href="#Onboarding_Misto">Alterni remoto e presenza in base a ciò che devi produrre, chiarire o osservare nel contesto</a>
+</section>
+<section class="passage" id="Riequilibrio">
+<p>Riconduci il discorso al gruppo: “Il mio esempio è solo un riferimento. Mi interessa capire quali segnali vedete voi e quali informazioni servono per decidere meglio.”</p>
+<p>L’attenzione torna sulla collaborazione. La tua presenza viene percepita come abilitante, non dominante.</p>
+<a class="choice" data-score="1" href="#Rilancio_Neoassunto">Prosegui</a>
+</section>
+<section class="passage" id="Rilancio_Neoassunto">
+<div class="scenario-box"><span class="context-label">Scenario 3B · Rilancio da neoassunto</span><p>Ti rendi conto che, entrando in azienda, non è sempre facile intervenire al momento giusto. Puoi però recuperare valore con una piccola azione concreta: chiedere un chiarimento, proporre un confronto breve o trasformare un dubbio in apprendimento condiviso.</p></div>
+<p>Il punto non è dimostrare di sapere già tutto, ma imparare a muoverti con attenzione: osservare, fare domande utili e coinvolgere i colleghi senza forzare il contesto.</p>
+<p class="choice-header">Quale passo scegli per recuperare?</p>
+<a class="choice" data-score="1" href="#Diario_Apprendimento">Raccogli persone, temi e dubbi emersi in una piccola mappa di osservazioni</a>
+<a class="choice" data-score="1" href="#Onboarding_Misto">Proponi un confronto guidato con un collega più esperto</a>
+<a class="choice" data-score="2" href="#Onboarding_Misto">Rifletti su come usare meglio presenza e remoto nel tuo percorso di crescita</a>
+</section>
+<section class="passage" id="Diario_Apprendimento">
+<div class="scenario-box"><span class="context-label">Scenario 4B · Mappa di osservazioni</span><p>Raccogli in modo semplice ciò che hai osservato: persone coinvolte, temi ricorrenti, informazioni non ancora chiare e momenti in cui la presenza potrebbe aiutarti a capire meglio il contesto.</p></div>
+<p>Da neoassunto, questa mappa ti aiuta a non disperdere ciò che emerge nelle conversazioni informali. Non è un diario personale, ma uno strumento leggero per orientarti tra relazioni, scambi e priorità.</p>
+<p class="choice-header">Come usi questa mappa?</p>
+<a class="choice" data-score="1" href="#Onboarding_Presenza">Lo porti in un confronto in presenza per chiarire priorità e dinamiche</a>
+<a class="choice" data-score="2" href="#Onboarding_Misto">Lo usi per pianificare quando lavorare da remoto e quando essere in ufficio</a>
+<a class="choice" data-score="2" href="#Mappa_Team">Lo trasformi in una prima mappa di persone, temi e domande da approfondire</a>
+</section>
+<section class="passage" id="Onboarding_Presenza">
+<div class="scenario-box"><span class="context-label">Scenario 5A · Primo periodo di inserimento</span><p>Nel primo periodo vorresti sentirti autonomo il prima possibile. Hai accesso ai materiali e agli strumenti, ma fai ancora fatica a capire chi coinvolgere, quando chiedere aiuto e quali priorità siano davvero decisive.</p></div>
+<p>Capisci che la presenza in ufficio può diventare una leva strategica: facilita la conoscenza del gruppo, rende più fluida la trasmissione delle informazioni e accelera la comprensione delle dinamiche reali del lavoro.</p>
+<p class="choice-header">Come rendi concreta questa scelta?</p>
+<a class="choice" data-score="2" href="#Mappa_Team">Costruisci una piccola mappa di persone, temi e situazioni da osservare meglio in sede</a>
+<a class="choice" data-score="0" href="#Presenza_Formale">Partecipi solo alle riunioni obbligatorie</a>
+<a class="choice" data-score="2" href="#Riflessione_Strategica">Formuli una riflessione finale sull’importanza della presenza</a>
+</section>
+<section class="passage" id="Onboarding_Remoto">
+<div class="scenario-box"><span class="context-label">Scenario 5B · Autonomia da remoto</span><p>Valorizzi l’organizzazione individuale e pensi di poter gestire quasi tutto da remoto, purché tu tenga aggiornati attività, messaggi e documenti.</p></div>
+<p>Il ragionamento è pratico, ma rischia di farti perdere una parte importante dell’apprendimento iniziale: segnali informali, priorità non scritte, modi di lavorare del gruppo e brevi confronti che spesso chiariscono più di una nota scritta.</p>
+<p class="choice-header">Come puoi riequilibrare la scelta?</p>
+<a class="choice" data-score="2" href="#Onboarding_Misto">Integra il remoto con momenti in sede mirati</a>
+<a class="choice" data-score="0" href="#Mappa_Team">Mantieni il focus sull’organizzazione individuale, ma aggiungi un momento di verifica</a>
+</section>
+<section class="passage" id="Onboarding_Misto">
+<div class="scenario-box"><span class="context-label">Scenario 5C · Presenza intenzionale</span><p>Scegli un approccio ibrido consapevole: usare il remoto per concentrazione e produzione individuale, ma pianificare momenti in sede quando ti serve capire il contesto, osservare i flussi e conoscere le persone.</p></div>
+<p>La proposta è equilibrata: non trasformi l’ufficio in un obbligo generico, ma in uno spazio in cui accelerare apprendimento, relazioni e comprensione operativa.</p>
+<p class="choice-header">Qual è il prossimo passo?</p>
+<a class="choice" data-score="2" href="#Mappa_Team">Costruire una mappa di relazioni e informazioni da consolidare in sede</a>
+<a class="choice" data-score="0" href="#Presenza_Formale">Limitarti alle riunioni già calendarizzate</a>
+</section>
+<section class="passage" id="Mappa_Team">
+<div class="scenario-box"><span class="context-label">Scenario 6 · Mappa del gruppo e dei flussi informativi</span><p>Disegni una piccola mappa: persone chiave, argomenti ricorrenti, momenti in cui è utile osservare, canali da usare e domande da portare nei primi confronti.</p></div>
+<p>La mappa ti permette di dare ordine a ciò che osservi in sede: persone, informazioni, momenti utili e domande ancora aperte.</p>
+<p class="choice-header">Come gestisci le informazioni raccolte?</p>
+<a class="choice" data-score="2" href="#Trasmissione_Fluida">Prepari brevi sintesi condivise dopo i confronti principali</a>
+<a class="choice" data-score="0" href="#Conoscenza_Implicita">Ti affidi soprattutto alla memoria e all’osservazione</a>
+<a class="choice" data-score="0" href="#Presenza_Formale">Aspetti le riunioni ufficiali</a>
+</section>
+<section class="passage" id="Presenza_Formale">
+<p>Limitarti alle riunioni obbligatorie garantisce un allineamento minimo, ma non sfrutta pienamente il valore della presenza. Molte informazioni decisive emergono prima o dopo gli incontri formali, quando le persone chiariscono dubbi, anticipano criticità o traducono le decisioni in azioni pratiche.</p>
+<p class="choice-header">Vuoi ampliare il valore della scelta?</p>
+<a class="choice" data-score="1" href="#Trasmissione_Fluida">Aggiungi momenti di osservazione e confronto mirato</a>
+<a class="choice" data-score="0" href="#Dinamiche_Reali">Rimani sul piano formale, ma provi a raccogliere cosa ti manca davvero</a>
+</section>
+<section class="passage" id="Trasmissione_Fluida">
+<div class="scenario-box"><span class="context-label">Scenario 7 · Trasmissione chiara delle informazioni</span><p>Dopo i confronti in sede, prepari sintesi brevi: cosa è stato chiarito, quale decisione è stata presa, quale dubbio resta aperto e chi può supportare il prossimo passo.</p></div>
+<p>Questa abitudine evita che la conoscenza resti nelle conversazioni informali. La presenza facilita lo scambio, ma la sintesi lo rende accessibile anche a chi non era presente.</p>
+<p class="choice-header">Come proteggi la qualità dell’informazione?</p>
+<a class="choice" data-score="2" href="#Dinamiche_Reali">Verifichi con il gruppo che la sintesi rappresenti correttamente il contesto</a>
+<a class="choice" data-score="0" href="#Sintesi_Eccessiva">Scrivi una sintesi molto lunga e dettagliata</a>
+<a class="choice" data-score="2" href="#Dinamiche_Reali">Condividi il punto principale e verifichi nel contesto come viene applicato</a>
+</section>
+<section class="passage" id="Conoscenza_Implicita">
+<p>L’osservazione è preziosa, ma se resta solo nella tua memoria può generare interpretazioni incomplete. Nel primo periodo di inserimento è utile trasformare ciò che osservi in domande, verifiche e piccoli riepiloghi condivisi.</p>
+<p class="choice-header">Come migliorare?</p>
+<a class="choice" data-score="1" href="#Dinamiche_Reali">Trasformi le osservazioni in sintesi brevi e verificabili</a>
+<a class="choice" data-score="1" href="#Dinamiche_Reali">Lasci spazio all’elaborazione individuale, poi proponi un confronto breve</a>
+</section>
+<section class="passage" id="Sintesi_Eccessiva">
+<p>La sintesi è accurata, ma troppo lunga. Le persone faticano a individuare le decisioni essenziali e i prossimi passi.</p>
+<p>Impari che la chiarezza non dipende dalla quantità di informazioni, ma dalla capacità di distinguere ciò che è utile, ciò che è urgente e ciò che va approfondito.</p>
+<p class="choice-header">Come recuperi efficacia?</p>
+<a class="choice" data-score="2" href="#Dinamiche_Reali">Riduci la sintesi a decisioni, dubbi aperti e prossime azioni</a>
+<a class="choice" data-score="2" href="#Dinamiche_Reali">La trasformi in tre punti chiave prima di chiudere il percorso</a>
+</section>
+<section class="passage" id="Dinamiche_Reali">
+<div class="scenario-box"><span class="context-label">Scenario 8 · Comprendere le dinamiche reali</span><p>Nei giorni successivi, inizi a riconoscere non solo le attività, ma anche il modo in cui il gruppo decide, si coordina, gestisce urgenze e distribuisce responsabilità.</p></div>
+<p>Nei primi giorni, alcuni segnali si colgono più facilmente osservando come le persone interagiscono, chiariscono priorità e gestiscono piccoli passaggi operativi.</p>
+<p class="choice-header">Come chiudi il percorso?</p>
+<a class="choice" data-score="2" href="#Riflessione_Strategica">Formuli una riflessione finale da condividere nel gruppo</a>
+<a class="choice" data-score="2" href="#Lezione_Appresa">Trasformi l’esperienza in una lezione appresa riutilizzabile</a>
+</section>
+<section class="passage" id="Riflessione_Strategica">
+<div class="scenario-box"><span class="context-label">Riflessione finale · Il valore strategico della presenza</span><p>La presenza in ufficio non è solo una questione logistica: nel tuo primo periodo di inserimento diventa un acceleratore di apprendimento e integrazione.</p></div>
+<p>Lavorare in presenza facilita la conoscenza del gruppo perché rende più naturali i primi contatti, le domande spontanee e la costruzione di fiducia. Permette inoltre una trasmissione di informazioni più fluida e chiara: i dubbi vengono intercettati prima, le priorità vengono spiegate nel momento giusto e le informazioni implicite possono essere rese visibili.</p>
+<p>Rispetto al solo lavoro da remoto, la presenza ti aiuta a comprendere più rapidamente le dinamiche reali: come si prendono le decisioni, come si gestiscono urgenze e responsabilità, quali segnali anticipano un problema e quali comportamenti facilitano la collaborazione.</p>
+<p class="choice-header">Chiudi il percorso</p>
+<a class="choice" data-final-trigger="true" href="#Finale_Auto">Completa il percorso</a>
+</section>
+<section class="passage" id="Lezione_Appresa">
+<p>Proponi una breve condivisione: tre elementi osservati, un rischio da anticipare e una pratica da riutilizzare. Il formato è semplice e favorisce il trasferimento di conoscenza.</p>
+<p>Il gruppo riconosce che la presenza in sede non è solo disponibilità fisica, ma capacità di trasformare interazioni informali in apprendimento condiviso.</p>
+<a class="choice" data-final-trigger="true" data-score="2" href="#Finale_Auto">Integra la riflessione strategica sulla presenza</a>
+</section>
+<section class="passage" id="Finale_Auto">
+<div class="scenario-box"><span class="context-label">Conclusione del percorso</span><p>La conclusione raccoglie il percorso appena attraversato e restituisce una riflessione coerente con l’esperienza vissuta.</p></div>
+<p>Se la conclusione non si apre automaticamente, usa il pulsante qui sotto.</p>
+<a class="choice" data-final-trigger="true" href="#Finale_Medio">Completa la storia</a>
+</section>
+<section class="passage" id="Finale_Eccellente">
+<div class="finale-box good"><span class="result-label">Esito: Neoassunto super-connettore consapevole</span><h2>Hai trasformato la presenza in valore professionale</h2><p>Le tue scelte hanno favorito apprendimento per osservazione, integrazione nel gruppo, circolazione delle informazioni e collaborazione spontanea. Hai costruito reputazione attraverso interventi misurati, utili e orientati al contesto.</p><div class="tip-box"><strong>Messaggio chiave:</strong> la presenza fisica diventa un acceleratore quando ti permette di cogliere segnali deboli, rendere esplicita la conoscenza implicita e attivare connessioni qualificate. Nel primo inserimento, questo valore è ancora più forte: conoscere il gruppo, ricevere informazioni chiare e leggere le dinamiche reali rende l’apprendimento più rapido e concreto.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa breve storia hai esplorato come piccole scelte quotidiane possano trasformare la presenza in ufficio in una leva di connessione, apprendimento e collaborazione.</p><ul><li>Quando ti avvicini con discrezione, fai domande di contesto e rendi visibili informazioni implicite, aiuti te stesso e il gruppo ad arrivare più allineati alle decisioni.</li><li>Quando proponi brevi confronti con obiettivi chiari, faciliti l’apprendimento per osservazione senza forzare le dinamiche.</li><li>Quando metti in contatto le persone con una cornice professionale, trasformi una conversazione informale in collaborazione concreta e rispettosa del tempo di tutti.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>Quale piccola occasione potresti usare nella tua prossima giornata in sede per collegare persone, informazioni o prospettive?<br/>Quale conoscenza implicita potresti rendere più accessibile anche a chi non era presente?</div></div>
+<p class="reflection"><strong>Riflessione:</strong> nella tua prossima giornata in sede, quale piccola occasione potresti usare per collegare persone, informazioni o prospettive?</p>
+<a class="choice" data-reset="true" href="#Start">Ricomincia la sfida</a>
+</section>
+<section class="passage" id="Finale_Alto">
+<div class="finale-box good"><span class="result-label">Esito: Connessione efficace</span><h2>Hai agito come neoassunto ponte credibile</h2><p>Hai creato ponti utili tra colleghi, reso più accessibili alcune informazioni e sostenuto il tuo apprendimento nel contesto fisico. Il tuo impatto è stato concreto e professionale.</p><div class="tip-box"><strong>Messaggio chiave:</strong> una connessione professionale efficace richiede contesto, obiettivo e attenzione al tempo delle persone coinvolte. La presenza in ufficio amplifica questo impatto quando ti aiuta a conoscere il gruppo e a chiarire informazioni nel momento in cui servono.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa breve storia hai visto che la presenza diventa significativa quando non resta semplice disponibilità fisica, ma si traduce in scambi mirati e utili.</p><ul><li>Quando fai emergere un vincolo o proponi una sintesi, rendi la comunicazione più chiara anche per chi ha meno contesto.</li><li>Quando chiedi supporto in modo preciso, rafforzi la tua integrazione nel gruppo e riduci la dipendenza dalle informazioni non dette.</li><li>Quando coinvolgi altri colleghi con misura, costruisci fiducia e reputazione collaborativa senza occupare spazio inutilmente.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>In quali momenti potresti trasformare una domanda di chiarimento in un aiuto per tutto il gruppo?<br/>Come potresti preparare meglio il prossimo confronto in presenza per renderlo più focalizzato?</div></div>
+<a class="choice" data-reset="true" href="#Start">Ricomincia la sfida</a>
+</section>
+<section class="passage" id="Finale_Medio">
+<div class="finale-box medium"><span class="result-label">Esito: Connessione parziale</span><h2>Hai creato valore, ma con margini di sviluppo</h2><p>Le tue scelte hanno sostenuto alcune interazioni utili, ma non sempre hanno trasformato la presenza in apprendimento condiviso o collaborazione strutturata.</p><div class="tip-box"><strong>Messaggio chiave:</strong> essere presenti non basta. Il valore aumenta quando le interazioni vengono rese intenzionali, accessibili e orientate a un risultato condiviso. Nel primo periodo, la presenza va usata per conoscere il gruppo, chiarire informazioni e comprendere le dinamiche reali.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa breve storia hai sperimentato che alcune scelte corrette possono comunque restare parziali se non vengono accompagnate da struttura, seguito o coinvolgimento del gruppo.</p><ul><li>Quando osservi senza intervenire o chiedi solo una risposta rapida, l’informazione arriva ma l’apprendimento rimane limitato.</li><li>Quando ti affidi solo a un supporto scritto, crei chiarezza, ma rischi di perdere il confronto necessario per verificare cosa hai davvero compreso.</li><li>Quando apri uno spazio di collaborazione senza un obiettivo preciso, l’intenzione è positiva ma il valore può disperdersi.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>Dove potresti aggiungere una domanda in più, un obiettivo più chiaro o un breve aggiornamento successivo?<br/>Quale occasione recente poteva diventare apprendimento condiviso invece di restare uno scambio puntuale?</div></div>
+<a class="choice" data-reset="true" href="#Start">Ricomincia la sfida</a>
+</section>
+<section class="passage" id="Finale_Basso">
+<div class="finale-box bad"><span class="result-label">Esito: Opportunità non valorizzate</span><h2>La presenza è rimasta prevalentemente passiva</h2><p>Hai mantenuto un comportamento corretto, ma diverse occasioni di apprendimento, collaborazione e visibilità professionale non sono state pienamente utilizzate.</p><div class="tip-box"><strong>Messaggio chiave:</strong> l’integrazione nel gruppo e la reputazione professionale si consolidano attraverso piccole azioni intenzionali: osservare, chiedere, connettere, chiarire e facilitare. Soprattutto all’inizio, rinunciare alla presenza o viverla in modo passivo può rallentare la conoscenza del gruppo e rendere meno immediata la comprensione del contesto.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa breve storia hai visto cosa può accadere quando la presenza resta corretta ma poco intenzionale: le informazioni continuano a circolare, ma molte occasioni di connessione non diventano valore per te e per il gruppo.</p><ul><li>Quando ti limiti a salutare, osservare o proseguire in autonomia, proteggi l’efficienza individuale ma lasci implicite informazioni che potevano aiutarti.</li><li>Quando intervieni senza creare prima un contesto adeguato, l’intenzione positiva rischia di diventare pressione.</li><li>Quando aspetti solo le riunioni formali, perdi alcuni segnali informali che spesso chiariscono priorità, responsabilità e dinamiche reali.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>In quali situazioni tendi a “lasciar correre” anche se noti un dubbio, un silenzio o un segnale debole?<br/>Cosa potresti cambiare già dalla prossima giornata in sede per rendere la tua presenza più utile al tuo inserimento e al gruppo?</div></div>
+<a class="choice" data-reset="true" href="#Start">Ricomincia la sfida</a>
+</section>
+</main>
+</div>
+<script id="choice-score-script">
+(function(){
+  const SCORE_KEY = 'pilloleTalentPresenzaScore';
+  const PATH_KEY = 'pilloleTalentPresenzaPath';
+
+  function resetScore(){
+    sessionStorage.setItem(SCORE_KEY, '0');
+    sessionStorage.setItem(PATH_KEY, '[]');
+  }
+  function getScore(){
+    return parseInt(sessionStorage.getItem(SCORE_KEY) || '0', 10) || 0;
+  }
+  function addScore(value, label){
+    const nextScore = getScore() + (parseInt(value || '0', 10) || 0);
+    sessionStorage.setItem(SCORE_KEY, String(nextScore));
+    try {
+      const path = JSON.parse(sessionStorage.getItem(PATH_KEY) || '[]');
+      if (label) { path.push(label.trim()); }
+      sessionStorage.setItem(PATH_KEY, JSON.stringify(path));
+    } catch(e) {}
+  }
+  function chooseFinal(){
+    const score = getScore();
+    if (score >= 14) { return 'Finale_Eccellente'; }
+    if (score >= 9)  { return 'Finale_Alto'; }
+    if (score >= 4)  { return 'Finale_Medio'; }
+    return 'Finale_Basso';
+  }
+  function goToFinal(){
+    const finalId = chooseFinal();
+    if (location.hash !== '#' + finalId) {
+      location.hash = finalId;
+    }
+  }
+  document.addEventListener('click', function(e){
+    const link = e.target.closest && e.target.closest('a.choice');
+    if (!link) return;
+    if (link.dataset.reset === 'true') {
+      resetScore();
+      return;
+    }
+    if (link.dataset.score !== undefined) {
+      addScore(link.dataset.score, link.textContent || '');
+    }
+    if (link.dataset.finalTrigger === 'true') {
+      e.preventDefault();
+      goToFinal();
+    }
+  });
+  window.addEventListener('hashchange', function(){
+    if (location.hash === '#Finale_Auto') { goToFinal(); }
+  });
+  if (!sessionStorage.getItem(SCORE_KEY) || !location.hash || location.hash === '#Start') {
+    resetScore();
+  }
+  if (location.hash === '#Finale_Auto') { goToFinal(); }
+})();
+</script>
+<script id="standalone-passaggi-visibili-script">
+(function(){
+  function ensureStartHash(){
+    if(!window.location.hash || window.location.hash === '#landing'){
+      window.location.hash = '#Start';
+    }
+  }
+  function aggiornaPassaggioVisibile(){
+    var hash = window.location.hash || '#Start';
+    var passages = document.querySelectorAll('.passage');
+    passages.forEach(function(p){ p.classList.remove('is-active'); });
+    var target = document.querySelector(hash);
+    if(target && target.classList && target.classList.contains('passage')){
+      target.classList.add('is-active');
+      window.scrollTo(0,0);
+    } else {
+      var start = document.querySelector('#Start');
+      if(start){ start.classList.add('is-active'); }
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){ ensureStartHash(); aggiornaPassaggioVisibile(); });
+  window.addEventListener('hashchange', aggiornaPassaggioVisibile);
+  ensureStartHash();
+  aggiornaPassaggioVisibile();
+})();
+</script>
+</body>
+</html>
