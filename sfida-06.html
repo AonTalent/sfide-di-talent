@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Apprendere dal Feedback | Sfide di Talent</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5TH9LKJ');</script>
+<!-- End Google Tag Manager -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#000000;--blue:#0067B3;--sky:#33A4E8;--powder:#DCEBF6;--mist:#F2F7FB;--cream:#F7F8FA;--white:#fff;--text:#111111;--muted:#5F6B76;--accent:#0067B3;--warn:#F0A500;--bad:#B00020;--border:#DCEBF6}
+html,body{width:100%;min-height:100%;scroll-behavior:smooth}body{font-family:'Nunito','Segoe UI',Arial,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.65}.landing{display:block}.story-shell{display:none}body.story-open .landing{display:none}body.story-open .story-shell{display:block}
+.hero{position:relative;width:100%;padding:80px 40px 110px;overflow:hidden;background:linear-gradient(135deg,#000 0%,#031827 45%,#0067B3 100%)}.hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(90deg,#0067B3 0%,#33A4E8 48%,#000 100%)}.hero-inner{position:relative;max-width:900px;margin:0 auto}.brand-mark{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;color:#fff;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.brand-dot{width:34px;height:34px;border-radius:10px;background:#0067B3;border:1px solid rgba(255,255,255,.28);box-shadow:0 12px 24px rgba(0,0,0,.22)}.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,103,179,.22);border:1px solid rgba(255,255,255,.28);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase;margin-bottom:28px}.hero-title{font-family:'Playfair Display',serif;font-size:clamp(38px,5.5vw,64px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}.hero-title span{color:#33A4E8}.hero-desc{font-size:17px;color:rgba(255,255,255,.78);line-height:1.7;max-width:860px;margin-bottom:28px}.hero-nb{font-size:14px;font-style:italic;color:rgba(255,255,255,.62);line-height:1.6;max-width:760px;margin-bottom:32px}.hero-meta{display:flex;gap:14px;flex-wrap:wrap}.hero-meta-item{border:1px solid rgba(255,255,255,.16);background:rgba(0,103,179,.18);border-radius:999px;padding:7px 14px;color:#fff;font-size:13px}.hero-meta-item strong{font-weight:800}
+.challenges{max-width:1180px;margin:0 auto;padding:72px 32px 100px}.section-label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0067B3;margin-bottom:10px}.section-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--navy);margin-bottom:44px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px}.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 18px 45px rgba(0,103,179,.12);transition:transform .3s ease,box-shadow .3s ease;text-decoration:none;color:inherit;display:flex;flex-direction:column}.card:hover{transform:translateY(-5px);box-shadow:0 22px 58px rgba(0,103,179,.18)}.card-cover{height:160px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.cover-01{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-02{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-03{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-04{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-05{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-06{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-07{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-08{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-09{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.cover-10{background:linear-gradient(135deg,#000 0%,#0067B3 58%,#33A4E8 100%)}.card-cover-pattern{position:absolute;inset:0;opacity:.07;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:20px 20px}.card-cover-number{font-family:'Playfair Display',serif;font-size:68px;font-weight:800;color:rgba(255,255,255,.86);position:absolute;right:18px;bottom:-8px;line-height:1}.card-cover-icon{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;z-index:1}.card-badge{position:absolute;top:14px;left:14px;background:#0067B3;border-radius:100px;padding:3px 11px;font-size:11px;font-weight:800;color:#fff;letter-spacing:.06em;text-transform:uppercase}.card-body{padding:24px 24px 16px;flex:1;display:flex;flex-direction:column}.card-month{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.card-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:10px}.card-desc{font-size:14px;line-height:1.65;color:var(--muted);flex:1;margin-bottom:14px}.card-competency{display:inline-flex;align-items:center;gap:6px;background:var(--mist);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:800;color:#0067B3;margin-bottom:4px;width:max-content;max-width:100%}.card-footer{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-top:1px solid #F0F4F8}.card-time{font-size:12px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:5px}.card-arrow{width:32px;height:32px;border-radius:50%;background:var(--powder);display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;flex-shrink:0}.card:hover .card-arrow{background:#0067B3;transform:translateX(3px);color:white}
+.about{background:#000;padding:72px 32px}.about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}.about-label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#33A4E8;margin-bottom:12px}.about-title{font-family:'Playfair Display',serif;font-size:28px;color:#fff;margin-bottom:16px;line-height:1.25}.about-text{font-size:15px;color:rgba(255,255,255,.68);line-height:1.7}.about-list{display:flex;flex-direction:column;gap:20px}.about-item{display:flex;gap:16px;align-items:flex-start}.about-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}.about-item-title{font-size:14px;font-weight:800;color:white;margin-bottom:4px}.about-item-desc{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5}footer{text-align:center;padding:32px;font-size:13px;color:var(--muted);background:var(--cream);border-top:1px solid #E8EFF5}
+#sfida-nav{position:sticky;top:0;z-index:50;height:58px;background:rgba(248,250,251,.98);border-bottom:1px solid rgba(26,58,92,.10);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:0 26px;box-shadow:0 1px 6px rgba(26,58,92,.05);backdrop-filter:blur(10px)}.back-link{justify-self:start;display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:8px 16px;border-radius:999px;border:1px solid #D9E7F2;background:#fff;color:var(--muted);font-size:14px;font-weight:800;line-height:1;text-decoration:none;box-shadow:0 2px 8px rgba(26,58,92,.06);transition:.2s}.back-link:hover{background:var(--mist);color:var(--navy)}.nav-logo{justify-self:center;font-family:'Playfair Display',serif;font-size:17px;font-weight:800;color:var(--navy);white-space:nowrap}.nav-tag{justify-self:end;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:800;white-space:nowrap}
+.story-main{max-width:900px;margin:0 auto;padding:40px 22px 64px}.passage{display:none;background:#fff;border:1px solid rgba(26,58,92,.10);border-radius:22px;padding:26px;margin:24px 0;box-shadow:0 14px 34px rgba(26,58,92,.06);scroll-margin-top:80px}.passage.is-active{display:block}.intro-box{background:linear-gradient(135deg,#000,#0067B3);color:#fff;border-radius:24px;padding:30px 28px;text-align:center;box-shadow:0 16px 36px rgba(26,58,92,.15)}.intro-box h1{margin:12px 0 10px;color:#fff;font-size:2rem;font-family:'Playfair Display',serif}.intro-box p{color:rgba(255,255,255,.88);margin:0}.intro-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 14px;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.scenario-box{background:#EBF5FB;border-left:5px solid #0067B3;border-radius:0 16px 16px 0;padding:18px 22px;margin:18px 0}.context-label{display:block;color:#0067B3;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:6px}.challenge-box,.reflection{background:#F8FAFB;border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:18px 0}.choice-header{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;margin:28px 0 10px}a.choice{display:block;background:#fff;border:2px solid var(--border);border-radius:14px;padding:14px 18px;margin:10px 0;text-decoration:none;color:#0067B3;font-weight:750}a.choice:hover{background:#EBF5FB;border-color:#0067B3;color:#000}a.choice::before{content:'→ ';color:#33A4E8}.finale-box{border-radius:20px;padding:24px;margin:18px 0}.finale-box.good{background:linear-gradient(135deg,#000,#0067B3);color:#fff}.finale-box.good h2{color:#fff}.finale-box.medium{background:#FEF5E7;border:2px solid var(--warn)}.finale-box.bad{background:#FEF0F0;border:2px solid var(--bad)}.result-label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900;opacity:.85}.tip-box{background:rgba(255,255,255,.18);border-radius:14px;padding:14px 16px;margin-top:14px}.finale-box.medium .tip-box,.finale-box.bad .tip-box{background:rgba(0,0,0,.05)}.finale-summary{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin:18px 0}
+@media(max-width:700px){.hero{padding:56px 24px 80px}.challenges{padding:48px 20px 72px}.about{padding:56px 20px}.about-inner{grid-template-columns:1fr;gap:40px}#sfida-nav{grid-template-columns:1fr;gap:6px;height:auto;padding:12px 20px}.back-link,.nav-logo,.nav-tag{justify-self:start}.story-main{padding:24px 14px 44px}.passage{padding:20px}}
+
+/* Logo aggiornato come file Onboarding */
+.brand-logo-wrap{display:flex;align-items:center;justify-content:flex-start;margin-bottom:26px}
+.brand-logo{height:54px;width:auto;display:block;filter:drop-shadow(0 12px 24px rgba(0,0,0,.25))}
+
+
+/* Solo le due sostituzioni richieste: logo bianco + sfondo landing page blu Pantone */
+.landing .hero{background:#0067B3!important;}
+.landing .brand-logo{filter:brightness(0) invert(1) drop-shadow(0 12px 24px rgba(0,0,0,.25))!important;}
+
+
+/* Aggiornamento richiesto: Talent argento pieno, sezione Come funziona Pantone, sfide secondo tavola colori. Nessun contenuto o script modificato. */
+:root{
+  --terna-blue-293:#0067B3;
+  --terna-blue-293-10:#E6F0FA;
+  --terna-blue-293-20:#CCE1F3;
+  --terna-blue-293-40:#99C2E6;
+  --terna-blue-293-60:#66A3D9;
+  --terna-blue-293-80:#3385C6;
+  --terna-black:#000000;
+  --terna-black-70:#4D4D4D;
+  --terna-black-40:#999999;
+  --terna-black-30:#B3B3B3;
+  --terna-silver-877:#C0C0C0;
+  --terna-p294:#092869;
+  --terna-p357:#143A10;
+  --terna-p1995:#8B1926;
+  --terna-p1525:#CC3E00;
+  --terna-p131:#D97700;
+}
+/* Talent: argento pieno, non sfumato */
+.landing .hero-title span{
+  color:var(--terna-silver-877)!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:var(--terna-silver-877)!important;
+  text-shadow:none!important;
+}
+/* Sezione finale Come funziona: blu Pantone 293 */
+.landing .about{
+  background:var(--terna-blue-293)!important;
+  color:#fff!important;
+}
+.landing .about *{color:#fff!important;}
+.landing .about .about-label,
+.landing .about .about-title,
+.landing .about .about-text,
+.landing .about .about-item-title,
+.landing .about .about-item-desc{color:#fff!important;}
+.landing .about .about-item{
+  background:rgba(255,255,255,.12)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+}
+.landing .about .about-icon{
+  background:rgba(255,255,255,.18)!important;
+  color:#fff!important;
+}
+/* Sfide/card secondo tavola colori Terna: blu istituzionale, retinature e complementari */
+.landing .section-label,
+.landing .section-title{color:var(--terna-blue-293)!important;}
+.landing .card{
+  border-color:rgba(0,103,179,.20)!important;
+  box-shadow:0 14px 34px rgba(9,40,105,.10)!important;
+}
+.landing .card-title{color:var(--terna-black)!important;}
+.landing .card-desc,.landing .card-competency,.landing .card-time,.landing .card-month{color:var(--terna-black-70)!important;}
+.landing .card-arrow{background:var(--terna-blue-293)!important;color:#fff!important;}
+.landing .card-badge{background:rgba(255,255,255,.18)!important;color:#fff!important;border-color:rgba(255,255,255,.35)!important;}
+.landing .card-cover{background:var(--terna-blue-293)!important;color:#fff!important;}
+.landing .cover-01{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p294))!important;}
+.landing .cover-02{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-blue-293-80))!important;}
+.landing .cover-03{background:linear-gradient(135deg,var(--terna-p294),var(--terna-blue-293))!important;}
+.landing .cover-04{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p357))!important;}
+.landing .cover-05{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p1995))!important;}
+.landing .cover-06{background:linear-gradient(135deg,var(--terna-p294),var(--terna-blue-293-60))!important;}
+.landing .cover-07{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p1525))!important;}
+.landing .cover-08{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p131))!important;}
+.landing .cover-09{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-black-70))!important;}
+.landing .cover-10{background:linear-gradient(135deg,var(--terna-p294),var(--terna-p131))!important;}
+.landing .card-footer{border-top-color:rgba(0,103,179,.16)!important;}
+/* Coerenza UI interna storie: mantengo interattivita, aggiorno solo colori visivi */
+#sfida-nav{background:#fff!important;border-bottom:2px solid rgba(0,103,179,.18)!important;}
+#sfida-nav .nav-logo{color:var(--terna-blue-293)!important;}
+#sfida-nav .nav-tag{color:var(--terna-black-70)!important;}
+.story-main h1,.story-main h2,.story-main h3{color:var(--terna-blue-293)!important;}
+.story-main .intro-box{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p294))!important;color:#fff!important;}
+.story-main .intro-box h1,.story-main .intro-box p,.story-main .intro-box *{color:#fff;}
+.story-main .scenario-box{background:var(--terna-blue-293-10)!important;border-left-color:var(--terna-blue-293)!important;}
+.story-main .context-label{color:var(--terna-blue-293)!important;}
+.story-main a.choice{border-color:rgba(0,103,179,.24)!important;color:var(--terna-blue-293)!important;}
+.story-main a.choice:hover{background:var(--terna-blue-293-10)!important;border-color:var(--terna-blue-293)!important;color:var(--terna-p294)!important;}
+.story-main .finale-box.good{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-p294))!important;color:#fff!important;}
+.story-main .finale-box.good h2{color:#fff!important;}
+.story-main .finale-box.medium{background:#FFF7E8!important;border-color:var(--terna-p131)!important;}
+.story-main .finale-box.bad{background:#FFF0EC!important;border-color:var(--terna-p1525)!important;}
+
+.landing .cover-11{background:linear-gradient(135deg,var(--terna-blue-293),var(--terna-black-70))!important;}.landing .cover-12{background:linear-gradient(135deg,var(--terna-p294),var(--terna-p131))!important;}
+
+.landing .hero-meta-item{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:6px!important;
+  white-space:nowrap!important;
+}
+.landing .hero-meta-item span:first-of-type,
+.landing .hero-meta-item span:first-of-type strong{
+  display:inline!important;
+  margin:0!important;
+  font-weight:800!important;
+  line-height:1!important;
+}
+.landing .hero-meta-item span:nth-of-type(2){
+  display:inline!important;
+  margin:0!important;
+  line-height:1!important;
+}
+
+
+/* Solo colori delle singole sfide: 12 combinazioni diverse, coerenti con palette Terna */
+.landing .cover-01{background:linear-gradient(135deg,#0067B3 0%,#092869 100%)!important;}
+.landing .cover-02{background:linear-gradient(135deg,#0067B3 0%,#3385C6 100%)!important;}
+.landing .cover-03{background:linear-gradient(135deg,#092869 0%,#0067B3 100%)!important;}
+.landing .cover-04{background:linear-gradient(135deg,#0067B3 0%,#143A10 100%)!important;}
+.landing .cover-05{background:linear-gradient(135deg,#0067B3 0%,#8B1926 100%)!important;}
+.landing .cover-06{background:linear-gradient(135deg,#092869 0%,#66A3D9 100%)!important;}
+.landing .cover-07{background:linear-gradient(135deg,#0067B3 0%,#CC3E00 100%)!important;}
+.landing .cover-08{background:linear-gradient(135deg,#0067B3 0%,#D97700 100%)!important;}
+.landing .cover-09{background:linear-gradient(135deg,#0067B3 0%,#4D4D4D 100%)!important;}
+.landing .cover-10{background:linear-gradient(135deg,#092869 0%,#D97700 100%)!important;}
+.landing .cover-11{background:linear-gradient(135deg,#143A10 0%,#999999 100%)!important;}
+.landing .cover-12{background:linear-gradient(135deg,#8B1926 0%,#C0C0C0 100%)!important;}
+
+
+/* Solo grafica richiesta: blu graduato su tutto il riquadro con logo, titolo e sfide */
+.landing .hero{
+  background:linear-gradient(135deg,#0067B3 0%,#092869 100%)!important;
+}
+.landing .hero::after{
+  background:linear-gradient(90deg,#0067B3 0%,#33A4E8 48%,#092869 100%)!important;
+}
+.landing .hero-title span{
+  color:#33A4E8!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:#33A4E8!important;
+  text-shadow:none!important;
+}
+/* La parte delle sfide resta integrata nello stesso riquadro, senza sembrare un blocco separato */
+.landing .hero-meta{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  padding:0!important;
+  box-shadow:none!important;
+}
+.landing .hero-meta-item{
+  background:rgba(255,255,255,.12)!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  color:#FFFFFF!important;
+}
+.landing .hero-meta-item span,
+.landing .hero-meta-item strong{
+  color:#FFFFFF!important;
+}
+
+
+html body .landing .about{background:linear-gradient(135deg,#0067B3 0%,#092869 100%)!important;color:#fff!important;}
+html body .landing .about .about-inner,
+html body .landing .about .about-list,
+html body .landing .about .about-item,
+html body .landing .about .about-label,
+html body .landing .about .about-title,
+html body .landing .about .about-text,
+html body .landing .about .about-item-title,
+html body .landing .about .about-item-desc{
+  background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important;
+}
+html body .landing .about .about-item{padding:0!important;margin:0!important;border-radius:0!important;}
+html body .landing .about .about-list{gap:28px!important;}
+html body .landing .about .about-item:before,
+html body .landing .about .about-item:after,
+html body .landing .about .about-icon:before,
+html body .landing .about .about-icon:after{display:none!important;content:none!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+html body .landing .about .about-icon{
+  background:#FFFFFF!important;border:1px solid rgba(0,0,0,.12)!important;outline:0!important;
+  box-shadow:0 10px 22px rgba(0,0,0,.22)!important;border-radius:16px!important;
+  width:66px!important;height:66px!important;min-width:66px!important;min-height:66px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  padding:0!important;margin:0 0 12px 0!important;font-size:30px!important;line-height:1!important;color:#111111!important;
+}
+html body .landing .about .about-icon svg,
+html body .landing .about .about-icon img{background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important;}
+html body .landing .about .about-label,
+html body .landing .about .about-title,
+html body .landing .about .about-text,
+html body .landing .about .about-item-title{color:#fff!important;}
+html body .landing .about .about-item-desc{color:rgba(255,255,255,.85)!important;}
+
+</style>
+<style id="sfida-06-immagine-e-testo">
+
+/* Inserita la foto allegata senza filtri, gradienti o alterazioni cromatiche. */
+.passage[data-story="6"] .intro-box{background-image:url("data:image/webp;base64,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") !important;
+  background-position:center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+  filter:none !important;
+}
+.intro-box::after{display:none !important;background:none !important;}
+
+
+/* Stessa resa della Sfida 1, applicata esclusivamente a badge, titolo e descrizione. */
+.passage[data-story="6"] .intro-badge{
+  text-shadow:0 1px 4px rgba(0,0,0,.88) !important;
+  background:rgba(7,26,46,.42) !important;
+}
+.passage[data-story="6"] .intro-box h1{
+  text-shadow:0 2px 6px rgba(0,0,0,.95) !important;
+  background:rgba(7,26,46,.48) !important;
+  border-radius:8px !important;
+  padding:4px 10px !important;
+}
+.passage[data-story="6"] .intro-box p{
+  text-shadow:0 2px 5px rgba(0,0,0,.92) !important;
+  background:rgba(7,26,46,.52) !important;
+  border-radius:8px !important;
+  padding:7px 12px !important;
+}
+
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TH9LKJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<nav id="sfida-nav"><a aria-label="Torna a tutte le sfide" class="back-link" href="index.html">← Tutte le sfide</a><div class="nav-logo">Sfide di Talent</div><div class="nav-tag">SFIDA #06</div></nav>
+<main class="story-main">
+<section class="passage" data-story="6" id="S6_Start">
+<div class="intro-box">
+<span class="intro-badge">SFIDA #06 - ONBOARDING</span>
+<h1>Apprendere dal Feedback</h1>
+<p>In questa storia sei una persona appena inserita in azienda. Durante le prime attività ricevi indicazioni, osservazioni e suggerimenti che possono aiutarti a comprendere meglio le aspettative del ruolo, migliorare più rapidamente e trasformare il confronto in una leva di crescita professionale.</p>
+</div>
+<p>Il percorso ti porta dentro situazioni realistiche di onboarding: una consegna rivista, un confronto con il referente, un commento non del tutto chiaro, un feedback ricevuto in riunione, una richiesta di miglioramento e il momento in cui decidi come applicare quanto appreso.</p>
+<div class="challenge-box"><strong>La sfida:</strong> usare il feedback non come giudizio personale, ma come strumento di apprendimento continuo: ascoltare, chiedere chiarimenti, distinguere il messaggio utile, applicarlo con metodo e dimostrare evoluzione nel tempo.</div>
+<p class="choice-header">Avvia la simulazione</p>
+<a class="choice choice-s6" href="#S6_Scenario1">Inizia la tua sfida</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario1">
+<div class="scenario-box"><span class="context-label">Scenario 1 · La prima bozza restituita</span><p>Hai preparato la tua prima bozza di lavoro. Il referente la restituisce con alcune osservazioni: il contenuto è corretto, ma il livello di sintesi non è ancora allineato alle aspettative del team e alcuni passaggi potrebbero essere più chiari.</p></div>
+<p>Il feedback arriva mentre eri convinto di aver seguito bene le indicazioni iniziali. Devi decidere come reagire, senza trasformare il confronto in una difesa del lavoro svolto.</p>
+<p class="choice-header">Come ti comporti?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_AscoltoAttivo">Accogli le osservazioni, annoti i punti principali e chiedi quale criterio può guidarti nella prossima occasione.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_DifesaBozza">Condividi il ragionamento che hai seguito e provi a capire se alcune scelte possono essere riviste.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_CorrezioneVeloce">Ringrazi, inizi a sistemare la bozza e tieni a mente che alcuni passaggi potrebbero richiedere maggiore chiarezza.</a>
+</section>
+<section class="passage" data-story="6" id="S6_AscoltoAttivo">
+<p>Resti concentrato sul messaggio, non solo sulle correzioni. Chiedi: “Qual è il criterio che dovrei usare per capire quanto dettaglio inserire?” La domanda porta il referente a esplicitare un’aspettativa implicita: in quel contesto serve aiutare chi legge a decidere rapidamente.</p>
+<p>Capisci che il feedback non riguarda solo la bozza, ma il modo in cui il team valuta chiarezza, priorità e utilità dell’output.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario2">Procedi con una revisione tenendo conto delle osservazioni ricevute.</a>
+</section>
+<section class="passage" data-story="6" id="S6_DifesaBozza">
+<p>Il tuo ragionamento ha senso, ma la conversazione si sposta sul giustificare le scelte fatte. Il referente chiarisce che non sta mettendo in discussione l’impegno, ma sta cercando di aiutarti a calibrare il lavoro rispetto alle aspettative del contesto.</p>
+<p>Ti accorgi che difendere automaticamente la bozza può farti perdere il dato più utile: cosa serve imparare per lavorare meglio la prossima volta.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_AscoltoAttivo">Riformuli il punto e chiedi quale orientamento usare nelle prossime consegne.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_CorrezioneVeloce">Accogli il feedback e inizi a rivedere la bozza con più attenzione.</a>
+</section>
+<section class="passage" data-story="6" id="S6_CorrezioneVeloce">
+<p>La bozza migliora rapidamente, ma resta poco chiaro il motivo profondo delle modifiche. Hai risolto l’urgenza, però potresti ripetere lo stesso errore in un contesto simile.</p>
+<p>Applicare il feedback è utile; comprenderlo rende l’apprendimento più stabile.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario2">Rileggi le correzioni cercando di capire quale logica comune le collega.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_Scenario2B">Procedi con la versione corretta, riservandoti di osservare cosa succede nella prossima occasione.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario2">
+<div class="scenario-box"><span class="context-label">Scenario 2 · Comprendere l’aspettativa dietro la correzione</span><p>Rivedendo la bozza, noti che molte osservazioni riguardano lo stesso tema: rendere più semplice per il destinatario capire cosa è importante, cosa è urgente e quale decisione deve essere presa.</p></div>
+<p>Hai l’occasione di trasformare più commenti separati in una regola di lavoro riutilizzabile.</p>
+<p class="choice-header">Quale passo scegli?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_CriterioSintesi">Riorganizzi il feedback in una regola di lavoro: mettere in evidenza il messaggio chiave e poi i dettagli utili.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_ListaCorrezioni">Raccogli le correzioni ricevute in una lista da consultare quando capiterà una situazione simile.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_DomandaDiConferma">Chiedi un riscontro sulla nuova versione, mantenendo implicito il ragionamento che hai seguito.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario2B">
+<div class="scenario-box"><span class="context-label">Scenario 2B · Correzione senza apprendimento esplicito</span><p>La versione corretta viene accettata, ma qualche giorno dopo ricevi una richiesta simile. Ti accorgi di ricordare le modifiche, ma non il principio che le guidava.</p></div>
+<p>Il feedback è stato utile nell’immediato, ma non è ancora diventato una competenza trasferibile.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_CriterioSintesi">Riprendi le correzioni cercando di ricostruire il criterio che le ha generate.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_ListaCorrezioni">Ti appoggi alla lista dei punti già segnalati per orientare la revisione successiva.</a>
+</section>
+<section class="passage" data-story="6" id="S6_CriterioSintesi">
+<p>Riformuli il feedback in modo operativo: “Per questo tipo di output, parto dalla decisione o dal messaggio chiave, poi inserisco solo i dettagli che aiutano a comprenderlo.”</p>
+<p>Il referente conferma: hai colto non solo cosa cambiare, ma come ragionare in modo più efficace.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario3">Prosegui verso il confronto successivo.</a>
+</section>
+<section class="passage" data-story="6" id="S6_ListaCorrezioni">
+<p>La lista ti aiuta a non dimenticare alcuni errori, ma resta legata alla situazione specifica. Quando il contesto cambia, non sempre sai quale correzione applicare e perché.</p>
+<p>Una lista può sostenere l’esecuzione; un criterio sostiene l’apprendimento.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_CriterioSintesi">Riorganizzi i punti della lista in un principio più ampio da riutilizzare.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario3">Usi la lista come riferimento iniziale per non perdere i punti già emersi.</a>
+</section>
+<section class="passage" data-story="6" id="S6_DomandaDiConferma">
+<p>La conferma arriva, ma il confronto resta sul risultato finale. Il referente ti dice che sarebbe utile capire anche come sei arrivato alla revisione, così il miglioramento non rimane solo puntuale.</p>
+<p>Capisci che chiedere “va bene?” non è sempre sufficiente: a volte serve verificare se hai compreso il criterio.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_CriterioSintesi">Rendi esplicito il principio che pensi di aver riconosciuto.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario3">
+<div class="scenario-box"><span class="context-label">Scenario 3 · Feedback ricevuto davanti al gruppo</span><p>Durante una riunione, un collega più esperto commenta una parte del tuo lavoro: “Qui sarebbe utile anticipare meglio il rischio, altrimenti il messaggio arriva tardi.” Il tono è professionale, ma il feedback arriva davanti ad altre persone.</p></div>
+<p>La situazione può essere delicata: puoi sentirti esposto, oppure usare il momento per fare chiarezza e apprendere un criterio utile per il ruolo.</p>
+<p class="choice-header">Come rispondi?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_AccoglienzaPubblica">Accogli l’osservazione e chiedi un chiarimento breve sul segnale da considerare prima.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_ImbarazzoSilenzio">Prendi nota del commento e scegli di riprendere il chiarimento in un momento meno esposto.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_RispostaTecnica">Colleghi la risposta al dato che avevi considerato e lasci aperto il tema del rischio evidenziato.</a>
+</section>
+<section class="passage" data-story="6" id="S6_AccoglienzaPubblica">
+<p>La tua risposta mantiene il confronto sul contenuto: “Grazie, mi aiuta. Quale segnale avrei dovuto evidenziare prima?” Il collega chiarisce un criterio di lettura che anche altri trovano utile.</p>
+<p>Trasformi un momento potenzialmente scomodo in apprendimento condiviso, senza appesantire la riunione.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario4">Riprendi il punto nel follow-up successivo alla riunione.</a>
+</section>
+<section class="passage" data-story="6" id="S6_ImbarazzoSilenzio">
+<p>Prendi nota, ma il punto resta poco chiaro. Dopo la riunione ti rimane il dubbio su cosa avresti dovuto fare diversamente e rischi di interpretare il feedback come una critica generale.</p>
+<p>Il silenzio può proteggerti nell’immediato, ma non sempre aiuta a trasformare il confronto in apprendimento.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario4">Riprendi il feedback dopo la riunione con un messaggio focalizzato.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_EvitaTema">Preferisci non riaprire subito il tema e continui a lavorare sulla base di quanto hai annotato.</a>
+</section>
+<section class="passage" data-story="6" id="S6_RispostaTecnica">
+<p>Il dato tecnico che citi è corretto, ma non risponde pienamente al feedback. Il collega stava parlando di anticipare un rischio, non di dimostrare la correttezza del dato.</p>
+<p>Quando ricevi feedback, è importante distinguere tra difendere l’informazione e comprendere il bisogno sottostante.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_AccoglienzaPubblica">Riformuli il punto chiedendo quale rischio sarebbe stato utile evidenziare prima.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario4">Accogli il punto e decidi di approfondirlo in un momento successivo.</a>
+</section>
+<section class="passage" data-story="6" id="S6_EvitaTema">
+<p>Continui il lavoro senza riprendere il feedback. L’attività procede, ma il dubbio resta e potresti ripetere lo stesso schema nella prossima consegna.</p>
+<p>Evitare il confronto riduce il disagio nel breve periodo, ma limita la crescita professionale.</p>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario4">Riprendi il tema con una domanda limitata al punto che ti è rimasto meno chiaro.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario4">
+<div class="scenario-box"><span class="context-label">Scenario 4 · Follow-up dopo il confronto</span><p>Dopo la riunione hai l’opportunità di scrivere al collega o al referente per consolidare il feedback ricevuto. Vuoi evitare sia un messaggio troppo lungo, sia una richiesta troppo generica.</p></div>
+<p>Il follow-up può aiutarti a trasformare il commento in un’azione concreta e a mostrare attenzione verso il miglioramento.</p>
+<p class="choice-header">Che cosa invii?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_FollowupMirato">Un messaggio breve in cui riassumi cosa hai colto, cosa proverai a modificare e cosa vorresti verificare.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_FollowupAssente">Nessun messaggio immediato: hai preso nota e preferisci applicare prima quanto hai capito.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_FollowupLungo">Un riepilogo ampio in cui raccogli le tue riflessioni e provi a mostrare come hai interpretato il feedback.</a>
+</section>
+<section class="passage" data-story="6" id="S6_FollowupMirato">
+<p>Il messaggio facilita una risposta utile. La persona conferma che hai colto il punto e aggiunge un esempio pratico da considerare nella prossima attività.</p>
+<p>Il feedback diventa più concreto perché lo colleghi a un comportamento osservabile e a una prossima applicazione.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario5">Provi ad applicare il feedback nella consegna successiva.</a>
+</section>
+<section class="passage" data-story="6" id="S6_FollowupAssente">
+<p>Lavori in autonomia, ma non ricevi conferma sul criterio interpretato. Al momento della nuova consegna, non sei del tutto sicuro di aver applicato correttamente il feedback.</p>
+<p>Il follow-up non serve a chiedere approvazione continua, ma a consolidare apprendimento quando il messaggio non è ancora stabile.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_FollowupMirato">Riprendi il punto con una domanda breve e più mirata.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario5">Procedi applicando l’interpretazione che ti sembra più coerente.</a>
+</section>
+<section class="passage" data-story="6" id="S6_FollowupLungo">
+<p>Il messaggio dimostra impegno, ma è troppo ampio. Chi lo riceve deve distinguere tra ciò che hai capito, ciò che chiedi e ciò che intendi cambiare.</p>
+<p>Nel feedback, la chiarezza del follow-up è parte dell’apprendimento: rende più semplice darti indicazioni utili.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_FollowupMirato">Riformuli il follow-up in pochi punti essenziali.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario5">
+<div class="scenario-box"><span class="context-label">Scenario 5 · Applicare il feedback nella consegna successiva</span><p>Ricevi un nuovo compito simile. Questa volta provi a usare il feedback: parti dal messaggio chiave, evidenzi il rischio principale e inserisci i dettagli solo dove supportano la decisione.</p></div>
+<p>Prima di inviare, devi decidere come verificare se il cambiamento è davvero visibile.</p>
+<p class="choice-header">Come procedi?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Autoverifica">Rivedi la consegna usando il criterio ricevuto e chiedi un riscontro sul punto che hai provato a migliorare.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_InvioSenzaContesto">Invii la consegna senza spiegazioni aggiuntive, lasciando emergere il miglioramento dal lavoro stesso.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_RichiestaGenerica">Chiedi un riscontro complessivo sulla consegna, senza limitarti a un solo aspetto.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Autoverifica">
+<p>Scrivi: “Ho provato ad applicare il criterio emerso: messaggio chiave all’inizio e rischio evidenziato prima dei dettagli. Mi farebbe comodo un riscontro su questo punto.”</p>
+<p>Il feedback che ricevi è più preciso e conferma un miglioramento visibile. Hai reso il tuo apprendimento osservabile.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario6">Affronti un feedback meno specifico.</a>
+</section>
+<section class="passage" data-story="6" id="S6_InvioSenzaContesto">
+<p>La consegna è migliore, ma chi la riceve non sa che stai lavorando su un feedback specifico. Ricevi un commento positivo generale, ma poche indicazioni su cosa abbia funzionato davvero.</p>
+<p>Quando vuoi apprendere, può essere utile rendere visibile il comportamento che stai cercando di migliorare.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Autoverifica">Chiedi un riscontro sul criterio che hai provato ad applicare.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario6">Prosegui annotando quali cambiamenti hai introdotto.</a>
+</section>
+<section class="passage" data-story="6" id="S6_RichiestaGenerica">
+<p>Il feedback generale contiene alcuni spunti utili, ma si disperde su più aspetti. Alcuni commenti riguardano forma, altri contenuto, altri priorità.</p>
+<p>Se stai lavorando su un miglioramento specifico, una domanda mirata aiuta a ricevere indicazioni più utilizzabili.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Autoverifica">Riformuli la richiesta concentrandoti sul punto che volevi rendere più forte.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario6">
+<div class="scenario-box"><span class="context-label">Scenario 6 · Feedback ambiguo o poco specifico</span><p>In un’altra occasione ricevi un commento breve: “Secondo me è ancora un po’ da rafforzare.” Non è chiaro se il collega parli della struttura, del contenuto, del tono o della profondità dell’analisi.</p></div>
+<p>Puoi accettare il commento in modo generico oppure trasformarlo in un confronto più utile.</p>
+<p class="choice-header">Come rispondi?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_ChiarimentoSpecifico">Chiedi un esempio e un criterio per capire meglio quale miglioramento è atteso.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_InterpretazionePersonale">Formuli una tua interpretazione del commento e intervieni su più aspetti per maggiore sicurezza.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_AccettaGenerico">Ringrazi e chiedi qualche dettaglio in più, lasciando alla persona la scelta di cosa approfondire.</a>
+</section>
+<section class="passage" data-story="6" id="S6_ChiarimentoSpecifico">
+<p>La persona chiarisce che il punto riguarda la profondità dell’analisi: serviva esplicitare meglio le implicazioni per il destinatario. Con un esempio concreto, il feedback diventa finalmente applicabile.</p>
+<p>Impari che chiedere specificità non significa mettere in discussione il feedback, ma renderlo utilizzabile.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario7">Provi a trasformare il feedback in un piano di miglioramento.</a>
+</section>
+<section class="passage" data-story="6" id="S6_InterpretazionePersonale">
+<p>Modifichi molti aspetti della consegna, ma il risultato perde coerenza. Hai investito tempo, però non sai se hai risposto davvero al punto del feedback.</p>
+<p>Quando il feedback è ambiguo, agire troppo rapidamente può amplificare l’incertezza.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_ChiarimentoSpecifico">Riprendi il feedback chiedendo un esempio e un criterio di riferimento.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario7">Procedi costruendo una tua ipotesi di miglioramento da verificare più avanti.</a>
+</section>
+<section class="passage" data-story="6" id="S6_AccettaGenerico">
+<p>Ricevi qualche dettaglio in più, ma non abbastanza per capire come applicarlo. La domanda è stata accogliente, ma ancora troppo ampia.</p>
+<p>Una buona richiesta di chiarimento deve aiutare l’altro a rispondere in modo concreto.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_ChiarimentoSpecifico">Riformuli la domanda chiedendo un esempio più osservabile.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario7">
+<div class="scenario-box"><span class="context-label">Scenario 7 · Dare continuità al miglioramento</span><p>Dopo diversi feedback, hai raccolto spunti su sintesi, anticipazione dei rischi, chiarezza del messaggio e profondità dell’analisi. Il rischio è trattarli come commenti separati, senza una direzione di sviluppo.</p></div>
+<p>Puoi costruire una piccola pratica di miglioramento continuo che ti aiuti a integrare il feedback nel tuo modo di lavorare.</p>
+<p class="choice-header">Cosa fai?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_PianoFeedback">Imposti una traccia leggera: feedback ricevuto, criterio emerso, comportamento da provare e prossimo riscontro.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_ArchivioFeedback">Conservi i commenti ricevuti per consultarli quando si presenterà una situazione simile.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_PromemoriaErrori">Ti concentri sui punti da evitare, così da ridurre il rischio di ripetere gli stessi errori.</a>
+</section>
+<section class="passage" data-story="6" id="S6_PianoFeedback">
+<p>Il piano ti aiuta a non disperdere gli apprendimenti. Per ogni feedback definisci un comportamento osservabile: ad esempio aprire con il messaggio chiave, anticipare il rischio, chiedere un riscontro mirato o esplicitare le implicazioni.</p>
+<p>Il miglioramento diventa progressivo e verificabile, non dipendente solo dalla memoria.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_Scenario8">Porti il tuo apprendimento nel confronto con il referente.</a>
+</section>
+<section class="passage" data-story="6" id="S6_ArchivioFeedback">
+<p>Conservare i commenti è utile, ma se rimangono archiviati non guidano le attività successive. Quando arriva una nuova consegna, rischi di non collegarla agli apprendimenti già raccolti.</p>
+<p>Il feedback crea crescita quando entra nel modo in cui prepari, esegui e rivedi il lavoro.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_PianoFeedback">Riorganizzi l’archivio in una traccia di applicazione pratica.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_Scenario8">Riprendi i feedback che ti sembrano più ricorrenti e provi a usarli come riferimento.</a>
+</section>
+<section class="passage" data-story="6" id="S6_PromemoriaErrori">
+<p>Il promemoria riduce alcuni rischi, ma mantiene il focus su ciò che non devi sbagliare. Manca una prospettiva più evolutiva: quali comportamenti vuoi allenare e come verificarne l’efficacia.</p>
+<p>Apprendere dal feedback significa anche costruire nuove abitudini, non solo evitare errori passati.</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_PianoFeedback">Riformuli gli errori individuati come comportamenti da osservare e allenare.</a>
+</section>
+<section class="passage" data-story="6" id="S6_Scenario8">
+<div class="scenario-box"><span class="context-label">Scenario 8 · Restituire evidenza del cambiamento</span><p>Nel confronto periodico con il referente, hai l’opportunità di mostrare come hai usato i feedback ricevuti. Non si tratta di dimostrare di essere perfetto, ma di rendere visibile il percorso di apprendimento.</p></div>
+<p>Il modo in cui racconti il miglioramento può rafforzare la fiducia e aiutarti a ricevere feedback più mirati e utili.</p>
+<p class="choice-header">Come chiudi il percorso?</p>
+<a class="choice choice-s6" data-s6-score="2" href="#S6_EvidenzaApprendimento">Condividi tre elementi collegati: feedback ricevuto, cambiamento provato e prossimo punto da sviluppare.</a>
+<a class="choice choice-s6" data-s6-score="0" href="#S6_AttesaValutazione">Lasci che sia il referente a restituirti se ha notato cambiamenti nel tuo modo di lavorare.</a>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_RaccontoGenerico">Racconti che stai lavorando sul miglioramento, restando però su un piano abbastanza generale.</a>
+</section>
+<section class="passage" data-story="6" id="S6_EvidenzaApprendimento">
+<p>Il referente vede un percorso chiaro: non solo hai ricevuto feedback, ma lo hai interpretato, applicato e trasformato in comportamenti osservabili. Il confronto diventa più maturo e orientato allo sviluppo.</p>
+<p>Chiudi la sfida con una consapevolezza nuova: il feedback è una leva di crescita quando viene ascoltato, compreso, applicato e verificato nel tempo.</p>
+<p class="choice-header">Chiudi il percorso</p>
+<a class="choice choice-s6" data-s6-final-trigger="true" href="#S6_Finale_Auto">Completa la storia</a>
+</section>
+<section class="passage" data-story="6" id="S6_AttesaValutazione">
+<p>Il referente nota alcuni miglioramenti, ma il confronto resta principalmente valutativo. Senza una tua lettura del percorso, rischi di ricevere feedback in modo passivo, aspettando che siano sempre gli altri a definire il prossimo passo.</p>
+<p>Il feedback diventa più potente quando lo usi anche per guidare la conversazione sul tuo sviluppo.</p>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_EvidenzaApprendimento">Rendi più chiaro cosa hai provato ad applicare e quale aspetto vuoi sviluppare.</a>
+<a class="choice choice-s6" data-s6-final-trigger="true" href="#S6_Finale_Auto">Completa comunque la storia</a>
+</section>
+<section class="passage" data-story="6" id="S6_RaccontoGenerico">
+<p>Il racconto mostra buona volontà, ma resta poco verificabile. Il referente ti invita a portare esempi concreti: quale feedback hai usato, cosa hai cambiato e quale effetto hai osservato.</p>
+<p>La crescita professionale diventa più credibile quando è collegata a evidenze specifiche.</p>
+<a class="choice choice-s6" data-s6-score="1" href="#S6_EvidenzaApprendimento">Riformuli il racconto collegandolo a esempi più concreti di apprendimento.</a>
+<a class="choice choice-s6" data-s6-final-trigger="true" href="#S6_Finale_Auto">Completa comunque la storia</a>
+</section>
+<section class="passage" data-story="6" id="S6_Finale_Auto">
+<div class="scenario-box"><span class="context-label">Conclusione del percorso</span><p>La conclusione viene calcolata in base alle scelte effettuate durante la storia.</p></div>
+<p>Se la conclusione non si apre automaticamente, usa il pulsante qui sotto.</p>
+<a class="choice choice-s6" data-s6-final-trigger="true" href="#S6_Finale_Medio">Completa la storia</a>
+</section>
+<section class="passage" data-story="6" id="S6_Finale_Alto">
+<div class="finale-box good"><span class="result-label">Esito: Apprendimento dal feedback pienamente attivato</span><h2>Hai trasformato il confronto in crescita professionale</h2><p>Le tue scelte hanno mostrato capacità di ascoltare, chiarire, applicare e verificare il feedback. Non ti sei limitato a correggere singole consegne: hai costruito un metodo per comprendere le aspettative del contesto e sviluppare competenze in modo progressivo.</p><div class="tip-box"><strong>Messaggio chiave:</strong> il feedback diventa una leva di crescita quando viene trattato come informazione utile sul lavoro, non come giudizio sulla persona. Chiedere criteri, esempi e riscontri mirati permette di trasformare osservazioni e suggerimenti in comportamenti concreti e miglioramento continuo.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa storia hai sperimentato un modo maturo di usare il feedback durante l’onboarding.</p><ul><li>Hai ascoltato il feedback cercando il criterio sottostante, non solo la correzione immediata.</li><li>Hai chiesto chiarimenti quando il messaggio era ambiguo, rendendo il confronto più utile e applicabile.</li><li>Hai reso visibile il tuo miglioramento attraverso esempi concreti, comportamenti osservabili e momenti di verifica.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>Quale feedback recente potresti trasformare in un comportamento concreto da allenare?<br/>Come potresti chiedere un riscontro mirato per capire se il cambiamento è davvero visibile?</div></div>
+<a class="choice choice-s6" data-s6-reset="true" href="#S6_Start">Ricomincia la sfida</a>
+</section>
+<section class="passage" data-story="6" id="S6_Finale_Medio">
+<div class="finale-box medium"><span class="result-label">Esito: Feedback compreso, ma da consolidare</span><h2>Hai iniziato a usare il feedback come leva di apprendimento</h2><p>Hai accolto diversi suggerimenti e in alcuni passaggi hai corretto il tuo modo di lavorare. Tuttavia, non sempre hai trasformato i feedback in criteri generali o in comportamenti osservabili. Il miglioramento è presente, ma può diventare più stabile.</p><div class="tip-box"><strong>Messaggio chiave:</strong> ricevere feedback è solo il primo passaggio. Per apprendere davvero, serve chiarire cosa significa concretamente il feedback, applicarlo in una situazione successiva e verificare se il cambiamento è stato percepito.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa storia hai visto che il feedback può restare puntuale oppure diventare sviluppo professionale.</p><ul><li>Correggere rapidamente è utile, ma comprendere il criterio evita di ripetere lo stesso errore.</li><li>Chiedere “va bene?” può non bastare: spesso serve esplicitare cosa hai capito e cosa stai provando a migliorare.</li><li>Annotare feedback ed errori aiuta, ma costruire un piccolo piano rende il miglioramento più intenzionale.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>Dove potresti passare da una correzione puntuale a un criterio riutilizzabile?<br/>Quale prossimo confronto potresti preparare con una domanda più specifica?</div></div>
+<a class="choice choice-s6" data-s6-reset="true" href="#S6_Start">Ricomincia la sfida</a>
+</section>
+<section class="passage" data-story="6" id="S6_Finale_Basso">
+<div class="finale-box bad"><span class="result-label">Esito: Feedback poco valorizzato</span><h2>Il confronto è rimasto spesso passivo o difensivo</h2><p>In diversi passaggi hai ricevuto indicazioni utili, ma non sempre le hai approfondite o trasformate in apprendimento. A volte hai corretto senza capire il criterio, altre volte hai evitato il confronto o interpretato da solo messaggi poco chiari.</p><div class="tip-box"><strong>Messaggio chiave:</strong> durante l’onboarding, il feedback è una fonte preziosa per comprendere aspettative, priorità e competenze richieste dal ruolo. Se resta implicito o viene vissuto come critica, perde molta della sua forza formativa.</div></div>
+<div class="finale-summary"><h3>Finale</h3><p>In questa storia hai osservato alcuni rischi comuni quando il feedback non viene gestito in modo intenzionale.</p><ul><li>Difendere subito il proprio lavoro può impedire di ascoltare il bisogno reale dietro l’osservazione.</li><li>Applicare correzioni senza comprenderne il perché limita la possibilità di migliorare in situazioni nuove.</li><li>Evitare domande di chiarimento può trasformare un suggerimento utile in un dubbio personale poco produttivo.</li></ul><div class="finale-reflection"><strong>Rifletti:</strong><br/>Quale feedback hai ricevuto di recente che potresti rileggere come informazione utile, non come giudizio?<br/>Quale domanda potresti usare per rendere più chiaro un feedback ambiguo?</div></div>
+<a class="choice choice-s6" data-s6-reset="true" href="#S6_Start">Ricomincia la sfida</a>
+</section>
+</main>
+<script>
+(function(){
+  var STORY = '6';
+  function key(){return 'pilloleTalentScoreS'+STORY;}
+  function resetScore(){sessionStorage.setItem(key(),'0');}
+  function getScore(){return parseInt(sessionStorage.getItem(key())||'0',10)||0;}
+  function addScore(value){sessionStorage.setItem(key(),String(getScore()+(parseInt(value||'0',10)||0)));}
+  function chooseFinal(){
+    const s=getScore();
+      if(s>=17)return 'S6_Finale_Alto';
+      if(s>=9)return 'S6_Finale_Medio';
+      return 'S6_Finale_Basso';
+  }
+  function updateMode(){
+    const hash=window.location.hash||'#S6_Start';
+    const passages=document.querySelectorAll('.passage');
+    passages.forEach(p=>p.classList.remove('is-active'));
+    const target=document.querySelector(hash) || document.getElementById('S6_Start');
+    if(target){target.classList.add('is-active'); window.scrollTo(0,0);}
+  }
+  document.addEventListener('click',function(e){
+    const a=e.target.closest&&e.target.closest('a.choice'); if(!a) return;
+    if(a.dataset.s6Reset==='true') resetScore();
+    const score=a.dataset.s6Score; if(score!==undefined) addScore(score);
+    if(a.dataset.s6FinalTrigger==='true'){e.preventDefault(); location.hash=chooseFinal();}
+  });
+  window.addEventListener('hashchange',updateMode);
+  document.addEventListener('DOMContentLoaded',updateMode);
+  updateMode();
+})();
+</script>
+</body>
+</html>
